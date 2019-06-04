@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const db = require('./db');
+
 const index = require('./routes/index.js');
 
 app.get('/', index);
