@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 
 const db = require('./db');
+const port = process.env.PORT || 3000;
 
 const index = require('./routes/index.js');
 
 app.get('/', index);
 
-app.listen(3000, () => console.log(`Open http://localhost:3000 to see a response.`));
+app.listen(port, () => console.log(`Open http://localhost:${port} to see a response.`));
