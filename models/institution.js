@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Institution = db.define('institution', {
+const Institution = db.sequelize.define('institution', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
@@ -15,3 +15,5 @@ const Institution = db.define('institution', {
     allowNull: false
   },
 });
+
+module.exports = Institution;
