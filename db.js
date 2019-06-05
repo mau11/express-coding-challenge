@@ -1,13 +1,16 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('', 'root', '', {
+// Create a new db
+const dbName = process.env.DB_NAME || 'users';
+const dbUser = process.env.DB_User || 'root';
+const dbPassword = process.env.DB_PASSWORD || '';
+
+const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   host: 'localhost',
   dialect: 'mysql',
 });
 
-// Create a new db named 'users'
-const dbName = 'users';
-sequelize.query('CREATE DATABASE IF NOT EXISTS ' + dbName + ';');
+sequelize.query(`CREATE DATABASE IF NOT EXISTS ${dbName} ;`);
 
 // Connect to db
 sequelize.authenticate()
@@ -17,3 +20,8 @@ sequelize.authenticate()
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+
+module.exports = {
+  sequelize: sequelize,
+  Sequelize: Sequelize,
+}
