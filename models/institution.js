@@ -1,17 +1,19 @@
-const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Institution = db.sequelize.define('institution', {
+const Institution = db.sequelize.define('institutions', {
   name: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false
   },
   url: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: db.Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isUrl: true,
+    }
   },
   domain: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false
   },
 });

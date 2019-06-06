@@ -1,4 +1,5 @@
 const db = require('../db');
+const Institution = require('./institution');
 
 const User = db.sequelize.define('user', {
   name: {
@@ -21,5 +22,7 @@ const User = db.sequelize.define('user', {
     allowNull: false
   },
 });
+
+User.belongsTo(Institution);
 
 module.exports = User;
